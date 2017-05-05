@@ -3,17 +3,65 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 
-// ReactDOM.render(
-//   <App />,
-//   document.getElementById('root')
-// );
+/*ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
 
-// ReactDOM.render(
-//   <div>root2 test</div>,
-//   document.getElementById('root2')
-// );
+ReactDOM.render(
+  <div>root2 test</div>,
+  document.getElementById('root2')
+);*/
 
-var testArg = 1;
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { date: new Date(), age: 18 };
+  }
+
+  componentDidMount() {
+    console.log('Clock mounted....');
+    this.timerID = setInterval(() => this.tick(), 1000);
+  }
+
+  componentWillUnmount() {
+    console.log('Clock unmounted....');
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date(),
+      // age: Math.random()
+    })
+    // console.info(this.state);
+    
+    //not working
+    // this.state.date = new Date();
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+        <h3>{this.state.age}</h3>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(
+  <div><Clock id="xxx" /><button onClick={testHandler}>test</button></div>,
+  document.getElementById('root')
+);
+
+function testHandler(evt){
+  console.log('test button clicked...');
+}
+
+
+/*var testArg = 1;
 var Element = function (props) {
   return (
     <div>
@@ -21,18 +69,18 @@ var Element = function (props) {
       <h2>It is {props.testProp}.</h2>
     </div>
   )
-};
+};*/
 
-function tick() {
-  testArg++;
-  // console.log(testArg);
-  ReactDOM.render(
-    <Element testProp={testArg} />,
-    document.getElementById('root')
-  );
-}
+// function tick() {
+//   // testArg++;
+//   // console.log(testArg);
+//   ReactDOM.render(
+//     <Clock />,
+//     document.getElementById('root')
+//   );
+// }
 
-setInterval(tick, 1000);
+// setInterval(tick, 1000);
 
 /*function Welcome(props) {
   console.log(typeof props.age);
