@@ -13,6 +13,15 @@ ReactDOM.render(
   document.getElementById('root2')
 );*/
 
+var Element = function (props) {
+  return (
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>It is {props.testProp}.</h2>
+    </div>
+  )
+};
+
 class Clock extends React.Component {
   constructor(props) {
     super(props);
@@ -30,12 +39,16 @@ class Clock extends React.Component {
   }
 
   tick() {
-    this.setState({
-      date: new Date(),
-      // age: Math.random()
-    })
-    // console.info(this.state);
-    
+    // this.setState({
+    //   date: new Date(),
+    // })
+
+    this.setState(prevState => ({
+      age: ++prevState.age
+    }));
+
+    console.info(this.state);
+
     //not working
     // this.state.date = new Date();
   }
@@ -46,6 +59,7 @@ class Clock extends React.Component {
         <h1>Hello, world!</h1>
         <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
         <h3>{this.state.age}</h3>
+        <Element testProp={this.state.age} />
       </div>
     )
   }
@@ -56,13 +70,13 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-function testHandler(evt){
+function testHandler(evt) {
   console.log('test button clicked...');
 }
 
 
-/*var testArg = 1;
-var Element = function (props) {
+// var testArg = 1;
+/*var Element = function (props) {
   return (
     <div>
       <h1>Hello, world!</h1>
