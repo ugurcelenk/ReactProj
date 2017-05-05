@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 
-ReactDOM.render(
+/*ReactDOM.render(
   <App />,
   document.getElementById('root')
 );
@@ -28,6 +28,23 @@ function tick() {
     element,
     document.getElementById('root')
   );
+  setInterval(tick, 1000);
+}*/
+
+function Welcome(props) {
+  console.log(typeof props.age);
+  // return <div><h1>Hello, {props.person.name}</h1><div>{props.person.age}</div></div>;
+  return <div><h1>Hello, {props.person.name}</h1><div>{props.age}</div></div>;
 }
 
-setInterval(tick, 1000);
+console.log("222");
+var tempProp = {
+  name: "Sara",
+  age: 18
+}
+const element = <Welcome person={tempProp} age={"19"} />;
+console.log("333");
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
