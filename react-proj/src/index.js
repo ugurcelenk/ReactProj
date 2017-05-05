@@ -37,14 +37,24 @@ function Welcome(props) {
   return <div><h1>Hello, {props.person.name}</h1><div>{props.age}</div></div>;
 }
 
-console.log("222");
 var tempProp = {
   name: "Sara",
   age: 18
 }
-const element = <Welcome person={tempProp} age={"19"} />;
-console.log("333");
+
+function Shell() {
+  return (
+    <div>
+      <Welcome person={tempProp} age={"19"} />
+      <Welcome person={tempProp} age={"18"} />
+      <Welcome person={tempProp} age={"17"} />
+    </div>)
+}
+
+// console.log("222");
+// const element = <Welcome person={tempProp} age={"19"} />;
+// console.log("333");
 ReactDOM.render(
-  element,
+  <Shell />,
   document.getElementById('root')
 );
